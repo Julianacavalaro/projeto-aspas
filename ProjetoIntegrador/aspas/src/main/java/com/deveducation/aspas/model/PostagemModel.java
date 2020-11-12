@@ -56,7 +56,7 @@ public class PostagemModel {
 	private UsuarioModel usuario;
 	
 	@OneToMany(mappedBy = "postagem", cascade = CascadeType.ALL)
-	@JsonIgnore
+	@JsonIgnoreProperties({"usuario", "comentario"})
 		private List<ComentarioModel> comentario;
 
 	public Long getIdPostagem() {
