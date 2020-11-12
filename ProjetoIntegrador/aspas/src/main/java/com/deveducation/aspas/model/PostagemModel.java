@@ -52,7 +52,7 @@ public class PostagemModel {
 	private TemaModel tema;
 
 	@ManyToOne
-	@JsonIgnore
+	@JsonIgnoreProperties({"postagem","comentario"})
 	private UsuarioModel usuario;
 	
 	@OneToMany(mappedBy = "postagem", cascade = CascadeType.ALL)
