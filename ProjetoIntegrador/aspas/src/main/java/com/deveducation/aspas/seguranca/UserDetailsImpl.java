@@ -1,27 +1,27 @@
 package com.deveducation.aspas.seguranca;
 
 import java.util.Collection;
-
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import com.deveducation.aspas.model.UsuarioModel;
 
-
-public class UserDetailsImpl {
+public class UserDetailsImpl implements UserDetails {
+	private static final long serialVersionUID = 1L; 
 	
-	private static final long serialVersionUID = 1L; //versão 
-
 	private String userName;
 	private String password;
 
-	public UserDetailsImpl(UsuarioModel user) { //CONSTRUTOR DE CLASSE
+	public UserDetailsImpl(UsuarioModel user) {
 		this.userName = user.getEmailUsuario();
-		this.password = user.getSenhaUsuario();		
+		this.password = user.getSenhaUsuario();
 	}
-
-	public UserDetailsImpl() {}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return null;
+	}
+
+	public UserDetailsImpl() {
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class UserDetailsImpl {
 
 	@Override
 	public boolean isAccountNonExpired() {
-		return true; //aqui costuma ser if else pra dar caminhos e diferentes situações
+		return true;
 	}
 
 	@Override
@@ -53,4 +53,5 @@ public class UserDetailsImpl {
 	public boolean isEnabled() {
 		return true;
 	}
+
 }

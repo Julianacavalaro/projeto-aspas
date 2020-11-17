@@ -1,7 +1,6 @@
 package com.deveducation.aspas.model;
 
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,47 +9,43 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
-
 
 @Entity
 @Table(name = "tb_usuario")
 public class UsuarioModel {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idUsuario;
-	
+
 	@Column
 	@NotNull
 	private String nomeCompleto;
-	
+
 	@Column
 	@NotNull
 	private String emailUsuario;
-	
+
 	@Column
 	@NotNull
 	private String senhaUsuario;
-	
+
 	@Column
 	@NotNull
 	private String tipoUsuario;
-	
+
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("usuario")
 	private List<PostagemModel> postagem;
-
+	
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("usuario")
 	private List<ComentarioModel> comentario;
-	
 
-	//Getter e Setter
-	
+	// Getter e Setter
+
 	public Long getIdUsuario() {
 		return idUsuario;
 	}
@@ -106,8 +101,5 @@ public class UsuarioModel {
 	public void setComentario(List<ComentarioModel> comentario) {
 		this.comentario = comentario;
 	}
-
-	
-
 	
 }

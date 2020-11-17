@@ -1,37 +1,42 @@
 package com.deveducation.aspas.model;
 
 public class UserLogin {
-
-	private String nome;
-	
-	private String usuario;
-	
-	private String senha;
-	
+	private String nomeCompleto;
+	private String emailUsuario;
+	private String senhaUsuario;
+	private String tipoUsuario;
 	private String token;
 
-	public String getNome() {
-		return nome;
+	public String getNomeCompleto() {
+		return nomeCompleto;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNomeCompleto(String nomeCompleto) {
+		this.nomeCompleto = nomeCompleto;
 	}
 
-	public String getUsuario() {
-		return usuario;
+	public String getEmailUsuario() {
+		return emailUsuario;
 	}
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
+	public void setEmailUsuario(String emailUsuario) {
+		this.emailUsuario = emailUsuario;
 	}
 
-	public String getSenha() {
-		return senha;
+	public String getSenhaUsuario() {
+		return senhaUsuario;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setSenhaUsuario(String senhaUsuario) {
+		this.senhaUsuario = senhaUsuario;
+	}
+
+	public String getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(String tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
 	}
 
 	public String getToken() {
@@ -41,5 +46,4 @@ public class UserLogin {
 	public void setToken(String token) {
 		this.token = token;
 	}
-
 }
