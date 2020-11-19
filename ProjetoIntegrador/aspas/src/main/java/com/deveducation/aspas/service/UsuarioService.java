@@ -15,11 +15,13 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioRepository repository;
 
-	public UsuarioModel CadastrarUsuario(UsuarioModel usuario) {
+	public Optional<UsuarioModel> CadastrarUsuario(UsuarioModel usuario) {
+		if(repository.findByEmailUsuario(usuario.getEmailUsuario()).isPresent())
+			return null;
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String senhaEncoder = encoder.encode(usuario.getSenhaUsuario());
 		usuario.setSenhaUsuario(senhaEncoder);
-		return repository.save(usuario);
+		return Optional.of(repository.save(usuario));
 	}
 
 	public Optional<UserLogin> Logar(Optional<UserLogin> user) {
