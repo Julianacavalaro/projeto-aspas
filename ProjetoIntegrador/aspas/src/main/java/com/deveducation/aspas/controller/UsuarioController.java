@@ -43,7 +43,7 @@ public class UsuarioController {
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
-	@GetMapping("/usuario/{usuario}")
+	@GetMapping("/usuario/{nomeCompleto}")
 	public ResponseEntity<List<UsuarioModel>> getByNomeCompleto(@PathVariable String nomeCompleto){
 		return ResponseEntity.ok(repository.findAllByNomeCompletoContainingIgnoreCase(nomeCompleto));
 	}
