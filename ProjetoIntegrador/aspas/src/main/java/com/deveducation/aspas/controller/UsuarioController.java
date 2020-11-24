@@ -43,7 +43,7 @@ public class UsuarioController {
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
-	@GetMapping("/usuario/{nomeCompleto}")
+	@GetMapping("/usuario/{usuario}")
 	public ResponseEntity<List<UsuarioModel>> getByNomeCompleto(@PathVariable String nomeCompleto){
 		return ResponseEntity.ok(repository.findAllByNomeCompletoContainingIgnoreCase(nomeCompleto));
 	}
@@ -72,11 +72,7 @@ public class UsuarioController {
 	
 	@PostMapping("/cadastrar")
 	public ResponseEntity<UsuarioModel> Post(@RequestBody UsuarioModel usuario) {
-		Optional<UsuarioModel> user = usuarioService.CadastrarUsuario(usuario);
-		try {
-			return ResponseEntity.ok(user.get());
-		} catch (Exception e) {
-			return ResponseEntity.badRequest().build();
-		}
+		return ResponseEntity.status(HttpStatus.CREATED)
+				.body(usuarioService.CadastrarUsuario(usuario));
 	}
 }
