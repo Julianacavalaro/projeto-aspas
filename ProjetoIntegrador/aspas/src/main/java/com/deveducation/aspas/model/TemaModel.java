@@ -28,7 +28,6 @@ public class TemaModel {
 	private String materia;
 	
 	@Column
-	@NotNull
 	private String submateria;
 	
 	@Column
